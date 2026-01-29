@@ -32,7 +32,6 @@ The **other device** is just a camera + browser.
 
 - Python **3.10+**
 - Windows / macOS / Linux
-- 
 - Keyboard & mouse access
 
 Install dependencies:
