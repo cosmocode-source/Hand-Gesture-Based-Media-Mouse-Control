@@ -23,4 +23,5 @@ No external hardware required
 # Branch Selection Guide
 
 Want low latency, offline, maximum reliability → local-cam
+
 Want remote control from another device → remote-webcam
