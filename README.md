@@ -17,13 +17,14 @@ The main branch does not contain runnable code.
 It exists to explain the system and guide users to the correct implementation branch.
 
 #System Capabilities (Common to Both Versions)
+
 Real-time hand detection and tracking
 Gesture-based media control (play, pause, next, volume)
 Gesture-based mouse control (move, click, scroll)
 Mode switching using hand gestures
 No external hardware required
 
-##Branch Selection Guide
+#Branch Selection Guide
 
 Want low latency, offline, maximum reliability → local-cam
 Want remote control from another device → remote-webcam
