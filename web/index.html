@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gesture Control</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+  <style>
+    /* Modern "Cyber-Sober" Theme */
+    :root {
+      --glow-color: #00ffcc;
+      --bg-dark: #050508;
+      --panel-bg: rgba(20, 20, 30, 0.8);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      background-image: 
+        linear-gradient(rgba(0, 255, 204, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 204, 0.03) 1px, transparent 1px);
+      background-size: 30px 30px;
+      color: #e0e0e0;
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    h2 {
+      text-transform: uppercase;
+      letter-spacing: 0.5rem;
+      font-weight: 300;
+      color: var(--glow-color);
+      text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+      margin-bottom: 5px;
+    }
+
+    #mode {
+      background: rgba(0, 255, 204, 0.1);
+      border: 1px solid var(--glow-color);
+      padding: 5px 20px;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      letter-spacing: 0.2rem;
+      box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+      transition: all 0.3s ease;
+    }
+
+    /* Video Container Styling */
+    .box {
+      position: relative;
+      margin-top: 20px;
+      border-radius: 15px;
+      padding: 10px;
+      background: var(--panel-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Scanning Line Animation */
+    .box::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10px;
+      width: calc(100% - 20px);
+      height: 2px;
+      background: var(--glow-color);
+      box-shadow: 0 0 15px var(--glow-color);
+      animation: scan 3s linear infinite;
+      z-index: 10;
+      opacity: 0.5;
+    }
+
+    @keyframes scan {
+      0% { top: 10px; }
+      100% { top: calc(100% - 10px); }
+    }
+
+    video, canvas {
+      width: 480px;
+      height: 360px;
+      border-radius: 8px;
+      display: block;
+    }
+
+    canvas {
+      position: absolute;
+      top: 10px; /* Aligned with padding */
+      left: 10px;
+      pointer-events: none;
+    }
+
+    #debug {
+      margin-top: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    /* Subtle pulsing effect for the status text */
+    #debug::before {
+      content: "> ";
+      color: var(--glow-color);
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Gesture Control</h2>
+  <p id="mode">MODE: MEDIA</p>
+
+  <div class="box">
+    <video id="video" autoplay muted></video>
+    <canvas id="canvas"></canvas>
+  </div>
+
+  <p id="debug">Waiting for camera…</p>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

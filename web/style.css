@@ -1,0 +1,48 @@
+body {
+  background: linear-gradient(135deg, #0f0f1a, #050510);
+  color: #eaeaf0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255,255,255,0.05);
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+h1 {
+  margin-bottom: 5px;
+}
+
+#mode {
+  color: #00ffd5;
+  font-weight: bold;
+}
+
+.camera-box {
+  position: relative;
+  margin-top: 15px;
+}
+
+video, canvas {
+  width: 480px;
+  height: 360px;
+  border-radius: 12px;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#status, #debug {
+  font-size: 14px;
+  opacity: 0.85;
+}
